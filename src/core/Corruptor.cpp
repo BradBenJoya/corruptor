@@ -17,13 +17,16 @@ void Corruptor::corrupt() {
     }
 
     std::ifstream input(m_path, std::ios::binary);
+    if (!input.is_open()) {
+        throw std::runtime_error("Failed to open input file: " + m_path.string());
+    }
 
     std::ofstream output(output_path, std::ios::binary);
     if (!output.is_open()) {
         throw std::runtime_error("Failed to create output file: " + output_path.string());
     }
 
-    char c = 0;
+    char c{0};
     while (input.get(c)) {
         if (std::isalnum(static_cast<unsigned char>(c))) {
             const std::size_t random_byte = Randomizer{}.getRandomNumber(0, 255);
