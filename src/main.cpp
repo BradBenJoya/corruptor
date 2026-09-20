@@ -6,7 +6,7 @@ int main(int argc, char** argv) {
         std::println("Usage: {} <file_to_corrupt>", argv[0]);
         return 1;
     }
-    
+
     core::Corruptor corruptor{argv[1]};
     corruptor.corrupt();
 

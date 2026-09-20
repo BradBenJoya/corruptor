@@ -15,6 +15,8 @@ void Corruptor::corrupt() {
         throw std::runtime_error("File in path was not found: " + m_path.string());
     } else if (!std::filesystem::is_regular_file(m_path)) {
         throw std::runtime_error("File in path is not a regular file: " + m_path.string());
+    } else if (std::filesystem::is_directory(m_path)) {
+        throw std::runtime_error("File in path is a directory: " + m_path.string());
     }
 
     std::ifstream input(m_path, std::ios::binary);
