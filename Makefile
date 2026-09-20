@@ -16,7 +16,8 @@ build: configure
 rebuild: clean build
 
 run: build
-	./$(BUILD_DIR)/$(TARGET)
+	echo "This is a test to see if the program runs correctly." > test.txt
+	./$(BUILD_DIR)/$(TARGET) test.txt
 
 clean:
 	rm -rf $(BUILD_DIR)

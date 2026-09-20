@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <fstream>
 #include <stdexcept>
+#include <print>
 
 namespace core {
 void Corruptor::corrupt() {
@@ -26,6 +27,8 @@ void Corruptor::corrupt() {
         throw std::runtime_error("Failed to create output file: " + output_path.string());
     }
 
+    std::println("Corrupting file: {} -> {}", m_path.string(), output_path.string());
+
     char c{0};
     while (input.get(c)) {
         if (std::isalnum(static_cast<unsigned char>(c))) {
@@ -35,5 +38,7 @@ void Corruptor::corrupt() {
             output.put(c);
         }
     }
+
+    std::println("File corrupted successfully: {}", output_path.string());
 }
 }
