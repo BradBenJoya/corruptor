@@ -2,6 +2,7 @@
 #include "Randomizer.h"
 
 #include <cctype>
+#include <filesystem>
 #include <fstream>
 #include <stdexcept>
 
@@ -9,10 +10,13 @@ namespace core {
 void Corruptor::corrupt() {
     const std::filesystem::path output_path = m_path.string() + ".corrupted";
 
-    std::ifstream input(m_path, std::ios::binary);
-    if (!input.is_open()) {
-        throw std::runtime_error("File not found: " + m_path.string());
+    if (!std::filesystem::exists(m_path)) {
+        throw std::runtime_error("File in path was not found: " + m_path.string());
+    } else if (!std::filesystem::is_regular_file(m_path)) {
+        throw std::runtime_error("File in path is not a regular file: " + m_path.string());
     }
+
+    std::ifstream input(m_path, std::ios::binary);
 
     std::ofstream output(output_path, std::ios::binary);
     if (!output.is_open()) {

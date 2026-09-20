@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
         return 1;
     }
     
-    core::Corruptor corruptor(argv[1]);
+    core::Corruptor corruptor{argv[1]};
     corruptor.corrupt();
 
     return 0;
