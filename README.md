@@ -4,10 +4,10 @@ Corruptor is a small C++23 command-line utility that creates a damaged copy of o
 
 ## How to use
 
-Run the program with one or more file paths. File paths can be listed in any order, and the `-p` or `-preserve` option can be placed anywhere in the command:
+Run the program with one or more file paths. File paths can be listed in any order, and options can be placed anywhere in the command:
 
 ```bash
-corruptor <file> [<file> ...] [-p]
+corruptor <file> [<file> ...] [-p] [-o]
 ```
 
 Example:
@@ -37,6 +37,21 @@ The long and short option names are equivalent:
 ```text
 -preserve
 -p
+```
+
+### Overwrite mode
+
+By default, Corruptor writes each result to a new file with a `.corrupted` suffix. Use `-o` or `-overwrite` to modify the original file instead:
+
+```bash
+corruptor homework.pdf -o
+```
+
+Overwrite mode prints a warning and requires a `Y` confirmation before changing the file. The long and short option names are equivalent:
+
+```text
+-overwrite
+-o
 ```
 
 ## Build
