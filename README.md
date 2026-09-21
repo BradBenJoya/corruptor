@@ -1,6 +1,6 @@
 # Corruptor
 
-Corruptor is a small C++23 command-line utility that creates a damaged copy of one or more input files. Each output file receives a `.corrupted` suffix, so the original files remain unchanged.
+Corruptor is a small C++23 command-line utility that creates a damaged copy of one or more input files.
 
 ## How to use
 
