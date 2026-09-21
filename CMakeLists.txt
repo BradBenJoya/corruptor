@@ -34,6 +34,11 @@ target_link_libraries(${PROJECT_NAME}
         corruptor_core
 )
 
+target_link_options(${PROJECT_NAME}
+    PRIVATE
+        -static
+)
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 23
     CXX_STANDARD_REQUIRED ON

@@ -1,13 +1,13 @@
 # Corruptor
 
-Corruptor is a small C++ utility that takes an input file and creates a damaged copy with a `.corrupted` suffix. It is intended for testing how files degrade under non-destructive corruption patterns, especially for text-based files where the goal is to make them look like accidental damage rather than a full overwrite.
+Corruptor is a small C++23 command-line utility that creates a damaged copy of one or more input files. Each output file receives a `.corrupted` suffix, so the original files remain unchanged.
 
 ## How to use
 
-Run the program with one or more file paths:
+Run the program with one or more file paths. File paths can be listed in any order, and the `-p` or `-preserve` option can be placed anywhere in the command:
 
 ```bash
-corruptor <file_to_corrupt>...
+corruptor <file> [<file> ...] [-p]
 ```
 
 Example:
@@ -16,36 +16,58 @@ Example:
 corruptor homework.pdf notes.txt image.png
 ```
 
-This creates a new file named:
+This creates one output for each input:
 
-```bash
+```text
 homework.pdf.corrupted
+notes.txt.corrupted
+image.png.corrupted
 ```
 
-The original file remains unchanged.
+### Preserve mode
 
-## Build steps
+By default, every byte in each file is replaced with a random byte. Preserve mode keeps non-alphanumeric bytes, such as whitespace and punctuation, and randomizes only alphanumeric bytes:
+
+```bash
+corruptor homework.pdf notes.txt -p
+```
+
+The long and short option names are equivalent:
+
+```text
+-preserve
+-p
+```
+
+## Build
 
 ### Requirements
 
 - CMake
 - Ninja
 - A C++23-compatible compiler
+- Static versions of the compiler and system libraries
 
-### Build with the included Makefile
+### Using Make
 
 ```bash
 make build
 ```
 
-### Or build manually
+Run the built program through Make by passing the input files with `ARGS`:
+
+```bash
+make run ARGS="homework.pdf notes.txt -p"
+```
+
+### Using CMake directly
 
 ```bash
 cmake -S . -B bin -G Ninja
 cmake --build bin
 ```
 
-### Clean the build directory
+### Clean
 
 ```bash
 make clean
