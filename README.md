@@ -4,16 +4,16 @@ Corruptor is a small C++ utility that takes an input file and creates a damaged 
 
 ## How to use
 
-Run the program with a file path:
+Run the program with one or more file paths:
 
 ```bash
-corruptor <file_to_corrupt>
+corruptor <file_to_corrupt>...
 ```
 
 Example:
 
 ```bash
-corruptor homework.pdf
+corruptor homework.pdf notes.txt image.png
 ```
 
 This creates a new file named:

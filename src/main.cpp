@@ -1,14 +1,18 @@
 #include <print>
 #include "core/Corruptor.h"
+#include "core/Args.h"
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        std::println("Usage: {} <file_to_corrupt>", argv[0]);
+    core::Args args(argc, argv);
+    if (args.enteries.empty()) {
+        std::println("Usage: {} <file_to_corrupt>...", argv[0]);
         return 1;
     }
 
-    core::Corruptor corruptor{argv[1]};
-    corruptor.corrupt();
+    for (const auto& entry : args.enteries) {
+        core::Corruptor corruptor{entry};
+        corruptor.corrupt(args);
+    }
 
     return 0;
 }
