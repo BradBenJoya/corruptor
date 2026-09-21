@@ -16,8 +16,7 @@ build: configure
 rebuild: clean build
 
 run: build
-	echo "This is a test to see if the program runs correctly." > /src
-	./$(BUILD_DIR)/$(TARGET) /src
+	./$(BUILD_DIR)/$(TARGET) essay.txt
 
 clean:
 	rm -rf $(BUILD_DIR)
