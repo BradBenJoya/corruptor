@@ -1,5 +1,8 @@
 #include "Args.h"
+#include "help.h"
+#include <print>
 #include <stdexcept>
+#include <iostream>
 
 namespace core {
     Args::Args(int argc, char** argv) {
@@ -14,7 +17,9 @@ namespace core {
             } else if (arg == "-help" || arg == "-h") {
                 help = true;
             } else {
-                throw std::invalid_argument("Unknown argument: " + std::string(arg));
+                std::println(std::cerr, "Unknown argument: {}", arg);
+                core::printHelp();
+                return;
             }
         }
     }

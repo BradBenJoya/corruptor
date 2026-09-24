@@ -1,6 +1,7 @@
 #include "Corruptor.h"
 #include "Args.h"
-
+#include "help.h"
+#include <iostream>
 #include <cctype>
 #include <filesystem>
 #include <fstream>
@@ -15,8 +16,8 @@ namespace core {
             : std::filesystem::path{m_path.string() + ".corrupted"};
 
         if (!isFileValid()) {
-            throw std::runtime_error(
-                "File is invalid or a directory in path: " + m_path.string());
+            std::println(std::cerr, "Invalid file: {}", m_path.string());
+            return;
         }
 
         const auto corrupt_byte = [&](char byte) {
@@ -64,12 +65,14 @@ namespace core {
 
         std::ifstream input(m_path, std::ios::binary);
         if (!input.is_open()) {
-            throw std::runtime_error("Failed to open input file: " + m_path.string());
+            std::println(std::cerr, "Failed to open input file: {}", m_path.string());
+            return;
         }
 
         std::ofstream output(output_path, std::ios::binary);
         if (!output.is_open()) {
-            throw std::runtime_error("Failed to create output file: " + output_path.string());
+            std::println(std::cerr, "Failed to open output file: {}", output_path.string());
+            return;
         }
 
         std::println(
