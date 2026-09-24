@@ -11,6 +11,8 @@ namespace core {
                 preserve = true;
             } else if (arg == "-overwrite" || arg == "-o") {
                 overwrite = true;
+            } else if (arg == "-help" || arg == "-h") {
+                help = true;
             } else {
                 throw std::invalid_argument("Unknown argument: " + std::string(arg));
             }

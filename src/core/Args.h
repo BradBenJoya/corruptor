@@ -10,6 +10,7 @@ namespace core {
 
             bool preserve{false};
             bool overwrite{false};
+            bool help{false};
 
             std::vector<std::filesystem::path> entries;
     };

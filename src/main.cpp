@@ -1,11 +1,16 @@
-#include <print>
 #include "core/Corruptor.h"
 #include "core/Args.h"
+#include "core/help.h"
 
 int main(int argc, char** argv) {
     core::Args args(argc, argv);
+    if (args.help) {
+        core::printHelp();
+        return 0;
+    }
+
     if (args.entries.empty()) {
-        std::println("Usage: {} <file_to_corrupt>...", argv[0]);
+        core::printHelp();
         return 1;
     }
 

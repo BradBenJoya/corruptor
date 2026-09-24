@@ -42,6 +42,15 @@ corruptor homework.pdf -o
 
 Overwrite mode prints a warning and requires a `Y` confirmation before changing the file.
 
+### Help
+
+Print the available options with `-help` or `-h`. Help will ignore other options, such as `-o -help`:
+
+```bash
+corruptor -help
+corruptor -o -help
+```
+
 ## Build
 
 ### Requirements
