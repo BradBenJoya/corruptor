@@ -3,10 +3,10 @@
 
 namespace core {
     Args::Args(int argc, char** argv) {
-        for (int i{1uz}; i < argc; ++i) {
+        for (int i{1}; i < argc; ++i) {
             std::string_view arg(argv[i]);
             if (!arg.empty() && arg.front() != '-') {
-                enteries.emplace_back(arg);
+                entries.emplace_back(arg);
             } else if (arg == "-preserve" || arg == "-p") {
                 preserve = true;
             } else if (arg == "-overwrite" || arg == "-o") {

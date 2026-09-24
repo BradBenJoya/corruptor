@@ -32,13 +32,6 @@ By default, every byte in each file is replaced with a random byte. Preserve mod
 corruptor homework.pdf notes.txt -p
 ```
 
-The long and short option names are equivalent:
-
-```text
--preserve
--p
-```
-
 ### Overwrite mode
 
 By default, Corruptor writes each result to a new file with a `.corrupted` suffix. Use `-o` or `-overwrite` to modify the original file instead:
@@ -47,12 +40,7 @@ By default, Corruptor writes each result to a new file with a `.corrupted` suffi
 corruptor homework.pdf -o
 ```
 
-Overwrite mode prints a warning and requires a `Y` confirmation before changing the file. The long and short option names are equivalent:
-
-```text
--overwrite
--o
-```
+Overwrite mode prints a warning and requires a `Y` confirmation before changing the file.
 
 ## Build
 

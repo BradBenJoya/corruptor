@@ -4,12 +4,12 @@
 
 int main(int argc, char** argv) {
     core::Args args(argc, argv);
-    if (args.enteries.empty()) {
+    if (args.entries.empty()) {
         std::println("Usage: {} <file_to_corrupt>...", argv[0]);
         return 1;
     }
 
-    for (const auto& entry : args.enteries) {
+    for (const auto& entry : args.entries) {
         core::Corruptor corruptor{entry};
         corruptor.corrupt(args);
     }
